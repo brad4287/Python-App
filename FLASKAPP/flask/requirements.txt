@@ -5,3 +5,4 @@ jinja2==2.10
 MarkupSafe==1.1.1
 uWSGI==2.0.18
 Werkzeug==0.15.1
+gunicorn==19.7.1
