@@ -1,6 +1,7 @@
 stages:
     - build
     - test
+    - deploy
 
 build:
     stage: build
@@ -17,3 +18,19 @@ test:
     script:
         - echo "Testing"
         - test -f "build/info.txt"
+
+review_app:
+    stage: deploy
+    script: make deploy-app
+    environment:
+      name: review/$CI_COMMIT_REF_NAME
+      url: https://$CI_ENVIRONMENT_SLUG.example.com
+      on_stop: stop_review_app
+        
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploy to staging server"
+  environment:
+    name: staging
+    url: https://staging.example.com
