@@ -3,7 +3,7 @@ import os
 
 @app.route("/")
 def index():
-
+# Purpose of this file to create view 
     app_name = os.getenv("APP_NAME")
 
     if app_name:
